@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app='Music'>
+  <head>
+    <title>Spotify Lookup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Spotify Lookup</h1>
+
+      <!-- <ui-view></ui-view> -->
+
+      <div ng-controller="MainController as main">
+        <div class="form-group narrow-button"
+             ng-if="!main.loggedIn">
+          <button ng-click="main.login()"
+                  class="btn btn-primary">
+            Login with Spotify
+          </button>
+        </div>
+        <div class="form-group">
+          <input autofocus
+                 type="text"
+                 ng-model="main.input"
+                 ng-change="main.searchArtist()"
+                 placeholder="Search for an artist"
+                 class="form-control">
+        </div>
+
+        <div ng-repeat="artist in main.artists">
+          <a ng-href="{{artist.external_urls.spotify}}"
+             target="_blank"
+             class="col-xs-6">
+            <div class="text-center">
+              <h2>{{artist.name}}</h2>
+              <img ng-src="{{artist.images[0].url}}"
+                   class="img img-responsive"
+                   alt="">
+            </div>
+            </a>
+        </div>
+      </div>
+
+
+      <!-- Libraries -->
+      <script src="lib/angular.min.js"></script>
+      <script src="lib/angular-ui-router.min.js"></script>
+      <script src="lib/angular-spotify.min.js"></script>
+
+      <!-- Modules -->
+      <script src="src/music/music.module.js"></script>
+
+      <!-- Routes -->
+      <script src="src/routes.js"></script>
+
+    </div>
+  </body>
+</html>
