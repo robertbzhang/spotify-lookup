@@ -5,7 +5,7 @@ var app = angular.module('Music', ['ui.router', 'spotify']);
 
 app.config(function (SpotifyProvider) {
   SpotifyProvider.setClientId('e355d494521a4e5592917a7a47936b6d');
-  SpotifyProvider.setRedirectUri('http://localhost:3000/callback.html');
+  SpotifyProvider.setRedirectUri('https://robertbzhang.github.io/spotify-lookup/callback.html');
   SpotifyProvider.setScope('playlist-read-private');
 });
 
