@@ -5,43 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   </head>
   <body>
     <div class="container">
       <h1>Spotify Lookup</h1>
 
-      <!-- <ui-view></ui-view> -->
+      <ui-view></ui-view>
 
-      <div ng-controller="MainController as main">
-        <div class="form-group narrow-button"
-             ng-if="!main.loggedIn">
-          <button ng-click="main.login()"
-                  class="btn btn-primary">
-            Login with Spotify
-          </button>
-        </div>
-        <div class="form-group">
-          <input autofocus
-                 type="text"
-                 ng-model="main.input"
-                 ng-change="main.searchArtist()"
-                 placeholder="Search for an artist"
-                 class="form-control">
-        </div>
-
-        <div ng-repeat="artist in main.artists">
-          <a ng-href="{{artist.external_urls.spotify}}"
-             target="_blank"
-             class="col-xs-6">
-            <div class="text-center">
-              <h2>{{artist.name}}</h2>
-              <img ng-src="{{artist.images[0].url}}"
-                   class="img img-responsive"
-                   alt="">
-            </div>
-            </a>
-        </div>
-      </div>
 
 
       <!-- Libraries -->
@@ -54,6 +25,10 @@
 
       <!-- Routes -->
       <script src="src/routes.js"></script>
+
+      <script src="src/music/related.controller.js"></script>
+      <script src="src/music/data.service.js"></script>
+
 
     </div>
   </body>

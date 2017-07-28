@@ -6,34 +6,34 @@ var app = angular.module('Music', ['ui.router', 'spotify']);
 app.config(function (SpotifyProvider) {
   SpotifyProvider.setClientId('e355d494521a4e5592917a7a47936b6d');
   SpotifyProvider.setRedirectUri('https://robertbzhang.github.io/spotify-lookup/callback.html');
+  // SpotifyProvider.setRedirectUri('http://localhost:3000/callback.html');
   SpotifyProvider.setScope('playlist-read-private');
 });
+
 
 app.controller('MainController', ['Spotify', function (Spotify) {
   var main = this;
 
-  main.loggedIn = false;
+  main.artists = [];
 
   main.login = function () {
     Spotify.login().then(function (data) {
       console.log(data);
-      main.loggedIn = true;
     }, function () {
       console.log('didn\'t log in');
     })
   };
 
   main.searchArtist = function () {
-    Spotify.search(main.input, 'artist').then(function (data) {
-      main.artists = data.data.artists.items;
-    });
+    main.artists = [];
+    if (main.input.length !== 0) {
+      Spotify.search(main.input, 'artist').then(function (data) {
+        main.artists = data.data.artists.items;
+        console.log(main.artists);
+      });
+    }
   };
 
-  main.getData = function () {
-    Spotify.getAlbum('0sNOF9WDwhWunNAHPD3Baj').then(function (data) {
-      console.log(data);
-    });
-  }
 }]);
 
 })();

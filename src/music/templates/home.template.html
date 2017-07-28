@@ -1,15 +1,7 @@
-<!-- <form ng-submit="myFunc()">
-  <div class="form-group">
-    <input autofocus type="text" ng-model="main.input" placeholder="album name" class="form-control">
-  </div>
-  <div class="form-group narrow-button">
-    <button class="btn btn-primary" ng-click="main.getData(main.input);">Get Articles</button>
-  </div>
-</form> -->
-<div class="form-group narrow-button"
-     ng-if="!main.loggedIn">
+<div class="form-group narrow-button">
   <button ng-click="main.login()"
-          class="btn btn-primary">
+          class="btn btn-primary btn-lg"
+          ui-sref="search">
     Login with Spotify
   </button>
 </div>

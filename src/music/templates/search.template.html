@@ -1,0 +1,24 @@
+<div class="form-group">
+  <input autofocus
+         type="text"
+         ng-model="main.input"
+         ng-change="main.searchArtist()"
+         placeholder="Search for an artist"
+         class="form-control">
+</div>
+
+<div ng-repeat="artist in main.artists">
+  <a class="col-lg-3 col-md-4 col-sm-6 col-xs-6"
+     ng-if="artist.images[0].url"
+     ui-sref="related({uri: artist.uri})">
+    <div class="text-center">
+      <h2>{{artist.name}}</h2>
+      <img ng-src="{{artist.images[0].url}}"
+           class="img img-responsive"
+           alt="">
+    </div>
+  </a>
+</div>
+
+<!-- ng-href="{{artist.external_urls.spotify}}"
+ target="_blank" -->

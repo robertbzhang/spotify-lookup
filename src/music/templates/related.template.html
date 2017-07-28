@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1>Related To</h1>
+
+  <h2>{{relatedList.curArtist.name}}</h2>
+  <img ng-src="{{relatedList.curArtist.images[0].url}}"
+       class="img img-responsive"
+       alt=""
+       style="margin: 0 auto;">
+
+</div>
+
+<div ng-repeat="artist in relatedList.relatedArtists">
+  <a class="col-lg-3 col-md-4 col-sm-6 col-xs-6"
+     ng-if="artist.images[0].url"
+     ui-sref="related({uri: artist.uri})">
+    <div class="text-center">
+      <h2>{{artist.name}}</h2>
+      <img ng-src="{{artist.images[0].url}}"
+           class="img img-responsive"
+           alt="">
+    </div>
+  </a>
+</div>

@@ -18,19 +18,28 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/',
     templateUrl: 'src/music/templates/home.template.html',
     controller: 'MainController as main'
+  })
+
+  .state('search', {
+    url: '/search',
+    templateUrl: 'src/music/templates/search.template.html',
+    controller: 'MainController as main'
+  })
+
+  .state('related', {
+    url: '/related/{uri}',
+    templateUrl: 'src/music/templates/related.template.html',
+    controller: 'RelatedController as relatedList',
+    resolve: {
+      relatedArtists: ['$stateParams', 'DataService', function ($stateParams, DataService) {
+        return DataService.findRelated($stateParams.uri);
+      }],
+      curArtist: ['$stateParams', 'DataService', function ($stateParams, DataService) {
+        return DataService.getArtist($stateParams.uri);
+      }]
+    }
   });
 
-  // // Premade list page
-  // .state('mainList', {
-  //   url: '/main-list',
-  //   templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
-  //   controller: 'MainShoppingListController as mainList',
-  //   resolve: {
-  //     items: ['ShoppingListService', function (ShoppingListService) {
-  //       return ShoppingListService.getItems();
-  //     }]
-  //   }
-  // });
 }
 
 })();
