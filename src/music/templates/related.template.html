@@ -5,7 +5,19 @@
   <img ng-src="{{relatedList.curArtist.images[0].url}}"
        class="img img-responsive"
        alt=""
-       style="margin: 0 auto;">
+       style="margin: 0 auto;"
+       ui-sref="artist({uri: relatedList.curArtist.uri})">
+   <div ng-repeat="album in relatedList.albums">
+     <a class="col-lg-1 col-md-2 col-sm-3 col-xs-4"
+        href="{{album.external_urls.spotify}}">
+       <div class="text-center">
+         {{album.name}}
+         <img ng-src="{{album.images[0].url}}"
+              class="img img-responsive"
+              alt="">
+       </div>
+     </a>
+   </div>
 
 </div>
 

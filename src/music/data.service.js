@@ -22,6 +22,14 @@ function DataService(Spotify) {
       return data.data;
     });
   }
+
+  service.getArtistAlbums = function (uri) {
+    var artistURI = uri.substring(15);
+    return Spotify.getArtistAlbums(artistURI).then(function (data) {
+      console.log(data.data.items);
+      return data.data.items;
+    });
+  }
 }
 
 })();

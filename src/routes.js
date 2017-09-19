@@ -36,6 +36,20 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
       }],
       curArtist: ['$stateParams', 'DataService', function ($stateParams, DataService) {
         return DataService.getArtist($stateParams.uri);
+      }],
+      albums: ['$stateParams', 'DataService', function ($stateParams, DataService) {
+        return DataService.getArtistAlbums($stateParams.uri);
+      }]
+    }
+  })
+
+  .state('artist', {
+    url: '/artist/{uri}',
+    templateUrl: 'src/music/templates/artist.template.html',
+    controller: 'ArtistController as artistCtrl',
+    resolve: {
+      curArtist: ['$stateParams', 'DataService', function ($stateParams, DataService) {
+        return DataService.getArtist($stateParams.uri);
       }]
     }
   });
