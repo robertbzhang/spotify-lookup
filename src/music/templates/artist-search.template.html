@@ -1,4 +1,4 @@
-<h1>Search</h1>
+<br>
 <div class="form-group">
   <input autofocus
          type="text"
@@ -9,17 +9,17 @@
 </div>
 
 <div ng-repeat="artist in main.artists">
-  <a class="col-lg-3 col-md-4 col-sm-6 col-xs-6"
-     ng-if="artist.images[0].url"
-     ui-sref="related({uri: artist.uri})">
+  <a class="col-lg-4 col-md-6 col-sm-6"
+     ng-if="artist.images[0].url">
     <div class="text-center">
-      <h2>{{artist.name}}</h2>
+      <h4>{{artist.name}}</h4>
       <img ng-src="{{artist.images[0].url}}"
-           class="img img-responsive"
-           alt="">
+           class="img"
+           alt=""
+           height="170">
     </div>
   </a>
 </div>
 
-<!-- ng-href="{{artist.external_urls.spotify}}"
- target="_blank" -->
+// TODO -- put this controller in a new class similar to MainController, store
+// whether artist is selected

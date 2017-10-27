@@ -20,6 +20,18 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     controller: 'MainController as main'
   })
 
+  .state('menu', {
+    url: '/menu',
+    templateUrl: 'src/music/templates/menu.template.html',
+    controller: 'MainController as main'
+  })
+
+  .state('artist-search', {
+    url: '/artist-search',
+    templateUrl: 'src/music/templates/artist-search.template.html',
+    controller: 'MainController as main'
+  })
+
   .state('search', {
     url: '/search',
     templateUrl: 'src/music/templates/search.template.html',
